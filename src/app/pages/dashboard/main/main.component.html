@@ -1,2 +1,13 @@
-<p>main works!</p>
-<router-outlet></router-outlet>
+<div class="wrap">
+    <div class="side">
+        <p>I am the side bar</p>
+        <ul>
+            <li><a routerLink="/dashboard">Dashboard</a></li>
+            <li><a routerLink="/dashboard/add">Go To Add</a></li>
+        </ul>
+    </div>
+<div class="main">
+    <router-outlet></router-outlet>
+</div>
+</div>
+

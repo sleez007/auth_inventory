@@ -9,14 +9,15 @@ import { HomeComponent } from './pages/dashboard/home/home.component';
 import { MainComponent } from './pages/dashboard/main/main.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
+  
   {path: 'create-account', component: CreateAccountComponent},
   {path:'forgot-password', component: ForgotPasswordComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
   {path:'dashboard', component: MainComponent, children:[
-    {path: '', component:HomeComponent },
     {path:'add', component:  AddNewComponent},
+    {path: '', component:HomeComponent },
   ]},
+  {path: '', component: LoginComponent},
   {path:'**', component: LoginComponent}
 ];
 

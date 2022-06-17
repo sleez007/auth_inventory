@@ -1,1 +1,9 @@
-<p>home works!</p>
+<ul>
+    <li *ngFor="let ct of countries; let i = index;">
+       <a routerLink="/">
+        <h1>{{ct.country}}</h1>
+        <p>Population is {{ct.population }}</p>
+        <img [src]="ct.flag" width="200" [alt]="ct.country">
+       </a>
+    </li>
+</ul>
