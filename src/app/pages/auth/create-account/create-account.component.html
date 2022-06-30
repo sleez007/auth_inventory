@@ -1,1 +1,28 @@
-<p>create-account works!</p>
+<section class="account-wrapper">
+
+    <div class="account-wrapper__box">
+       <form (ngSubmit)="onSubmit()" [formGroup]="createAccountForm">
+        <h1>Create an Account</h1>
+        <div>
+            <label for="fullName">Full Name</label>
+            <input placeholder="E.G John Doe" id="fullName" formControlName="fullName" type="text">
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email" type="text">
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input id="password" formControlName="password" type="password">
+        </div>
+
+        <button [disabled]="!createAccountForm.valid" type="submit">Create an account</button>
+       </form>
+
+       <div class="login">
+            <p>Already have an account ? <a routerLink="/">Sign In</a></p>
+       </div>
+    </div>
+</section>

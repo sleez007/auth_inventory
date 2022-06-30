@@ -1,5 +1,30 @@
-<p>login works!</p>
+<!-- <p>login works!</p>
 <a routerLink="/create-account">Sign up</a><br/>
 <a routerLink="/forgot-password">Forgot Password</a><br/>
 <a routerLink="/reset-password">Reset Password</a><br/>
-<a routerLink="/dashboard/add">New product</a>
+<a routerLink="/dashboard/add">New product</a> -->
+<section class="account-wrapper">
+
+    <div class="account-wrapper__box">
+       <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <h1>Login To Your Account</h1>
+
+        <div>
+            <label for="email">Email</label>
+            <input id="email" formControlName="email" type="email" type="text">
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input id="password" formControlName="password" type="password">
+        </div>
+
+        <button [disabled]="!loginForm.valid" type="submit">Sign In</button>
+       </form>
+
+       <div class="login">
+            <p>Don't have an account ? <a routerLink="/create-account">Create account</a></p>
+            <p>Forgot password ? <a routerLink="/forgot-password">No Wahala</a></p>
+       </div>
+    </div>
+</section>
