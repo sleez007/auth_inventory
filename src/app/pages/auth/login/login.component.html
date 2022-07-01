@@ -20,6 +20,7 @@
         </div>
 
         <button [disabled]="!loginForm.valid" type="submit">Sign In</button>
+        <p *ngIf="isLoading">Loading...</p>
        </form>
 
        <div class="login">

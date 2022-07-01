@@ -1,0 +1,32 @@
+{
+  "create": [
+    {
+      "fullName": "Okoro Mmadu",
+      "email": "etokakingsley@gmail.com",
+      "password": "Aa12345@",
+      "id": 1
+    }
+  ],
+  "login": [
+    {
+      "email": "etokakingsley@gmail.com",
+      "password": "Aa12345@",
+      "id": 1
+    },
+    {
+      "email": "etokakingsley@gmail.com",
+      "password": "Aa12345@",
+      "id": 3
+    },
+    {
+      "email": "etokakingsley@gmail.com",
+      "password": "Aa12345@",
+      "id": 4
+    },
+    {
+      "email": "etokakingsley@gmail.com",
+      "password": "Aa12345@",
+      "id": 5
+    }
+  ]
+}
