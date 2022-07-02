@@ -1,1 +1,24 @@
-<p>add-new works!</p>
+<section class="account-wrapper">
+
+    <div class="account-wrapper__box">
+       <form (ngSubmit)="onSubmit()" [formGroup]="createProductForm">
+        <h1>Create/Edit a product</h1>
+        <div>
+            <label for="productName">Product Name</label>
+            <input placeholder="E.G Beans" id="productName" formControlName="productName" type="text">
+        </div>
+
+        <div>
+            <label for="price">Price</label>
+            <input id="price" type="number" formControlName="price">
+        </div>
+
+        <div>
+            <label for="shortDescription">Short Description</label>
+            <input id="shortDescription" formControlName="shortDescription" type="text">
+        </div>
+
+        <button [disabled]="!createProductForm.valid" type="submit">Create an account</button>
+       </form>
+    </div>
+</section>

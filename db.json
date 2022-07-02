@@ -7,6 +7,7 @@
       "id": 1
     }
   ],
+  "products": [],
   "login": [
     {
       "email": "etokakingsley@gmail.com",
@@ -27,6 +28,26 @@
       "email": "etokakingsley@gmail.com",
       "password": "Aa12345@",
       "id": 5
+    },
+    {
+      "email": "etokakingsley@gmail.com",
+      "password": "Aa12345@",
+      "id": 6
+    },
+    {
+      "email": "etokakingsley@gmail.com",
+      "password": "Aa12345@",
+      "id": 7
+    },
+    {
+      "email": "fav360@gmail.com",
+      "password": "Aa12345@",
+      "id": 8
+    },
+    {
+      "email": "kingxo@ghana.com",
+      "password": "Aa12345@",
+      "id": 9
     }
   ]
 }

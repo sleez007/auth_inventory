@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NetworkService } from 'src/app/services/network.service';
 import { forbiddenNameValidator } from '../create-account/create-account.component';
 
@@ -17,17 +18,23 @@ export class LoginComponent implements OnInit {
 
   isLoading: Boolean = false;
 
-  constructor(private networkService : NetworkService) { }
+  showPassword : boolean = true;
+
+  constructor(private networkService : NetworkService, private router: Router) { }
 
   ngOnInit(): void {
+    setTimeout(()=> this.showPassword = false, 8000)
   }
 
   onSubmit(){
-    alert(JSON.stringify(this.loginForm.value))
     this.isLoading = true;
     this.networkService.postRequest<{message: String}>('login',this.loginForm.value ).subscribe({
-      next: d => console.log(d) ,
-      error: e => console.log(e),
+      next: d => this.router.navigate(['/dashboard']) ,
+      error: e => {
+        console.log(e)
+        this.isLoading = false
+        
+      },
       complete: () => this.isLoading = false
     });
   }

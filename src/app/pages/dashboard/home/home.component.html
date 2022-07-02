@@ -1,9 +1,9 @@
 <ul>
-    <li *ngFor="let ct of countries; let i = index;">
-       <a routerLink="/">
-        <h1>{{ct.country}}</h1>
-        <p>Population is {{ct.population }}</p>
-        <img [src]="ct.flag" width="200" [alt]="ct.country">
+    <li *ngFor="let ct of products; let i = index;">
+       <a>
+        <h1 (click)="deleteProduct(ct.id)">{{ct.productName}}</h1>
+        <p>Product Price is {{ct.price }}</p>
+       <p>{{ct.shortDescription}}</p>
        </a>
     </li>
 </ul>

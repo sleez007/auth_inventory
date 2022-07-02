@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-const bag : {country: string, flag: string, population: number}[] = [
-  {country: 'Germany', flag: "https://flagcdn.com/w320/de.png", population: 3000000 },
-  {country: 'Belgium', flag: "https://flagcdn.com/w320/be.png", population: 9000000},
-  {country: 'Cook Islands', flag: "https://flagcdn.com/w320/ck.png", population: 12000000}
-]
-
+import { NetworkService } from 'src/app/services/network.service';
 
 @Component({
   selector: 'app-home',
@@ -14,10 +8,35 @@ const bag : {country: string, flag: string, population: number}[] = [
 })
 
 export class HomeComponent implements OnInit {
-  countries = bag;
-  constructor() { }
+
+  products: Product[] = []
+  constructor( private networkService : NetworkService) { }
 
   ngOnInit(): void {
+    this.networkService.getRequest<Product[]>('products').subscribe(
+      {
+        next:(data: Product[]) =>  this.products = data,
+        error:(e) => console.log(e)
+      }
+    )
   }
 
+  deleteProduct(id: number){
+    this.networkService.deleteRequest('products/', id).subscribe(
+      {
+        next : (d) => {
+          const index = this.products.findIndex(e=> e.id == id);
+          this.products.splice(index, 1);
+        }
+      }
+    )
+  }
+
+}
+
+interface Product{
+  id: number 
+  productName: string 
+  price: number
+  shortDescription : string 
 }
