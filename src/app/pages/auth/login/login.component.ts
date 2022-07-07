@@ -28,8 +28,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     this.isLoading = true;
-    this.networkService.postRequest<{message: String}>('login',this.loginForm.value ).subscribe({
-      next: d => this.router.navigate(['/dashboard']) ,
+    this.networkService.postRequest<{message: String, jwt_token: string, api_auth_user :{email: string, id: number, fullName: string}}>('auth/login',this.loginForm.value ).subscribe({
+      next: (data) =>{
+       localStorage.setItem("token", "Bearer "+data.jwt_token )
+       this.router.navigate(['/dashboard'])
+      } ,
       error: e => {
         console.log(e)
         this.isLoading = false

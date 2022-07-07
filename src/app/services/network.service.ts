@@ -15,7 +15,7 @@ export class NetworkService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = "http://localhost:3000/";
+  private apiUrl = "http://localhost:3000/api/v1/";
 
   getRequest<T>(path: String): Observable<T>{
     const url = this.apiUrl + path;
