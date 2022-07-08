@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { NetworkService } from 'src/app/services/network.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { AuthModel } from 'src/app/model/auth.model';
 
 @Component({
   selector: 'app-create-account',
@@ -14,17 +17,23 @@ export class CreateAccountComponent implements OnInit {
     email: ['', [Validators.email, Validators.required]],
     password: ['', [Validators.required, forbiddenNameValidator()]]
   });
-  constructor(private fb: FormBuilder, private networkService : NetworkService) { }
+  constructor(private fb: FormBuilder, private networkService : NetworkService, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
-    alert(JSON.stringify(this.createAccountForm.value))
+    //alert(JSON.stringify(this.createAccountForm.value))
     this.isLoading = true;
-    this.networkService.postRequest<{message: String}>('create',this.createAccountForm.value ).subscribe({
-      next: d => console.log(d) ,
-      error: e => console.log(e),
+    this.networkService.postRequest<AuthModel>('auth/create-account',this.createAccountForm.value ).subscribe({
+      next: data => {
+        localStorage.setItem("token", "Bearer "+data.jwt_token )
+        this.router.navigate(['/dashboard'])
+        this.toastr.success("Successful", data.message);
+       } ,
+      error: e =>{
+        this.toastr.error("Try again", 'An Error Occurred');
+      },
       complete: () => this.isLoading = false
     });
   }

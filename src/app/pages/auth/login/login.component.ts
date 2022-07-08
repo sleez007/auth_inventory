@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthModel } from 'src/app/model/auth.model';
 import { NetworkService } from 'src/app/services/network.service';
 import { forbiddenNameValidator } from '../create-account/create-account.component';
 
@@ -20,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   showPassword : boolean = true;
 
-  constructor(private networkService : NetworkService, private router: Router) { }
+  constructor(private networkService : NetworkService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     setTimeout(()=> this.showPassword = false, 8000)
@@ -28,15 +30,16 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     this.isLoading = true;
-    this.networkService.postRequest<{message: String, jwt_token: string, api_auth_user :{email: string, id: number, fullName: string}}>('auth/login',this.loginForm.value ).subscribe({
+    this.networkService.postRequest<AuthModel>('auth/login',this.loginForm.value ).subscribe({
       next: (data) =>{
-       localStorage.setItem("token", "Bearer "+data.jwt_token )
+       localStorage.setItem("token", "Bearer "+data.jwt_token );
+       this.toastr.success("Successful", data.message);
        this.router.navigate(['/dashboard'])
       } ,
       error: e => {
         console.log(e)
         this.isLoading = false
-        
+        this.toastr.error("Try again", 'An Error Occurred');
       },
       complete: () => this.isLoading = false
     });

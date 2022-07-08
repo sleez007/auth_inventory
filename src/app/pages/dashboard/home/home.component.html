@@ -1,9 +1,9 @@
 <ul>
     <li *ngFor="let ct of products; let i = index;">
        <a>
-        <h1 (click)="deleteProduct(ct.id)">{{ct.productName}}</h1>
+        <h1 (click)="deleteProduct(ct.id)">{{ct.product_name}}</h1>
         <p>Product Price is {{ct.price }}</p>
-       <p>{{ct.shortDescription}}</p>
+       <p>{{ct.description}}</p>
        </a>
     </li>
 </ul>

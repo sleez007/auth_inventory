@@ -5,6 +5,8 @@ import { NgProgressHttpModule } from '@ngx-progressbar/http';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +34,8 @@ import { AddNewComponent } from './pages/dashboard/add-new/add-new.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
     NgProgressModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductModel } from 'src/app/model/product.model';
 import { NetworkService } from 'src/app/services/network.service';
 
 @Component({
@@ -9,13 +10,13 @@ import { NetworkService } from 'src/app/services/network.service';
 
 export class HomeComponent implements OnInit {
 
-  products: Product[] = []
+  products: ProductModel[] = []
   constructor( private networkService : NetworkService) { }
 
   ngOnInit(): void {
-    this.networkService.getRequest<Product[]>('products').subscribe(
+    this.networkService.getRequest<ProductModel[]>('all/products').subscribe(
       {
-        next:(data: Product[]) =>  this.products = data,
+        next:(data: ProductModel[]) =>  this.products = data,
         error:(e) => console.log(e)
       }
     )
@@ -34,11 +35,5 @@ export class HomeComponent implements OnInit {
 
 }
 
-interface Product{
-  id: number 
-  productName: string 
-  price: number
-  shortDescription : string 
-}
 
 
