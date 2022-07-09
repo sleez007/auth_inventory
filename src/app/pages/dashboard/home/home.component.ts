@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor( private networkService : NetworkService) { }
 
   ngOnInit(): void {
-    this.networkService.getRequest<ProductModel[]>('all/products').subscribe(
+    this.networkService.getRequest<ProductModel[]>('all/products', true).subscribe(
       {
         next:(data: ProductModel[]) =>  this.products = data,
         error:(e) => console.log(e)
