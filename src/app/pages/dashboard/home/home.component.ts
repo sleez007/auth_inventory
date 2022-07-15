@@ -23,14 +23,16 @@ export class HomeComponent implements OnInit {
   }
 
   deleteProduct(id: number){
-    this.networkService.deleteRequest('products/', id).subscribe(
-      {
-        next : (d) => {
-          const index = this.products.findIndex(e=> e.id == id);
-          this.products.splice(index, 1);
-        }
-      }
-    )
+    alert("I have been called"+ id)
+    // this.networkService.deleteRequest('all/remove/', id).subscribe(
+    //   {
+    //     next : (d) => {
+    //       const index = this.products.findIndex(e=> e.id == id);
+    //       this.products.splice(index, 1);
+    //     },
+    //     error: e => console.log(e)
+    //   }
+    // )
   }
 
 }

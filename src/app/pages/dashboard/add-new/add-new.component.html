@@ -2,7 +2,7 @@
 
     <div class="account-wrapper__box">
        <form (ngSubmit)="onSubmit()" [formGroup]="createProductForm">
-        <h1>Create/Edit a product</h1>
+        <h1>{{ isEdit ? "Edit" : "Create"}} a product</h1>
         <div>
             <label for="productName">Product Name</label>
             <input placeholder="E.G Beans" id="productName" formControlName="productName" type="text">
@@ -18,7 +18,7 @@
             <input id="shortDescription" formControlName="shortDescription" type="text">
         </div>
 
-        <button [disabled]="!createProductForm.valid" type="submit">Create an account</button>
+        <button [disabled]="!createProductForm.valid" type="submit">{{ isEdit ? "Edit Product" : "Add Product"}}</button>
        </form>
     </div>
 </section>

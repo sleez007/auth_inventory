@@ -1,0 +1,8 @@
+<div class="card">
+    <a [routerLink]="['/dashboard/add', productModel.id]">
+        <h1 >{{productModel.product_name}}</h1>
+        <p>Product Price is {{productModel.price }}</p>
+       <p>{{productModel.description}}</p>
+    </a>
+    <a (click)="deleteNow()">Delete now</a>
+</div>

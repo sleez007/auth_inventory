@@ -14,11 +14,7 @@ export class NetworkService {
   private apiUrl = "http://localhost:3000/api/v1/";
 
   getRequest<T>(path: String, isAuthenticated: boolean = false): Observable<T>{
-
-   
     const headers = this.createHeaders(isAuthenticated == true ? {authorization: localStorage.getItem('token')} : {})
-
-
     const url = this.apiUrl + path;
     return this.http.get<T>(url, headers).pipe(retry(3))
   }
@@ -29,14 +25,16 @@ export class NetworkService {
     return this.http.post<T>(url, body, headers);
   }
 
-  updateRequest<T>(path: string, body: any): Observable<T>{
+  updateRequest<T>(path: string, body: any, isAuthenticated: boolean = false): Observable<T>{
     const url = this.apiUrl + path;
-    return this.http.put<T>(url, body)
+    const headers = this.createHeaders(isAuthenticated ? {authorization: localStorage.getItem('token')}: {})
+    return this.http.put<T>(url, body, headers);
   }
 
-  deleteRequest<T>(path: String, queryParam: any): Observable<T>{
+  deleteRequest<T>(path: String, queryParam: any , isAuthenticated: boolean = false): Observable<T>{
     const url = this.apiUrl + path + queryParam;
-    return this.http.delete<T>(url).pipe(retry(3))
+    const headers = this.createHeaders(isAuthenticated ? {authorization: localStorage.getItem('token')}: {})
+    return this.http.delete<T>(url, headers).pipe(retry(3));
   }
 
   private createHeaders(obj: any= {}){

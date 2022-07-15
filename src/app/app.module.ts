@@ -17,6 +17,7 @@ import { ForgotPasswordComponent } from './pages/auth/forgot-password/forgot-pas
 import { MainComponent } from './pages/dashboard/main/main.component';
 import { HomeComponent } from './pages/dashboard/home/home.component';
 import { AddNewComponent } from './pages/dashboard/add-new/add-new.component';
+import { ProductCardComponent } from './shared/product-card/product-card.component';
 
 
 
@@ -29,7 +30,8 @@ import { AddNewComponent } from './pages/dashboard/add-new/add-new.component';
     ForgotPasswordComponent,
     MainComponent,
     HomeComponent,
-    AddNewComponent
+    AddNewComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
